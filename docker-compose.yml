@@ -21,6 +21,11 @@ services:
       - docker_elk
     depends_on:
       - elasticsearch
+    environment:
+      - CONSUMER_KEY
+      - CONSUMER_SECRET
+      - OAUTH_TOKEN
+      - OAUTH_TOKEN_SECRET
   kibana:
     build: kibana/
     volumes:
