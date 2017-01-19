@@ -10,6 +10,11 @@ services:
       ES_JAVA_OPTS: "-Xms1g -Xmx1g"
     networks:
       - docker_elk
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
   logstash:
     build: logstash/
     command: -f /etc/logstash/conf.d/
@@ -40,9 +45,3 @@ services:
 networks:
   docker_elk:
     driver: bridge
-
-ulimits:
-  nproc: 65535
-  nofile:
-    soft: 20000
-    hard: 40000
